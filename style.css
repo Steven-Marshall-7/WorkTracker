@@ -1,0 +1,160 @@
+:root{
+    --font-family:  Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    --primary-col: rgb(255, 255, 255);
+    --secondary-col: rgb(143, 143, 143);
+    --card-color:rgba(24, 21, 49, 0.88);
+    --background: rgb(10, 9, 22);
+    --card-border-todo:8px rgb(255, 51, 0) solid;
+    --card-border-progress: 8px rgb(211, 243, 30) solid;
+    --card-border-completed: 8px rgb(128, 219, 76) solid;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+body {
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    font-family: var(--font-family);
+    background-color: var(--background);
+    color: var(--primary-col);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input{
+    border-radius: 20px;
+    border: 2px solid var(--secondary-col);
+    background-color: transparent;
+    text-align: center;
+    color: var(--primary-col);
+}
+
+.header{
+    text-transform: uppercase;
+    padding: 0 1em 1em 1em;
+    margin: 1.2em 0 1.2em 0; 
+    border: 1px solid var(--primary-col);
+}
+
+#description{
+    width: 52ch;
+}
+
+#task-name{
+    width: 17ch;
+}
+
+#task-hours{
+    width: 17ch;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    margin-right: 0.5em;
+}
+
+button{
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 0.5em 5em 0.5em 5em;
+    border: 0;
+    cursor: pointer;
+
+}
+
+.taskDelete{
+    margin-top: 1em;
+    padding: 0.2em 1.5em 0.2em 1.5em;
+}
+
+.task-count{
+    display: flex;
+}
+
+
+.task-count > *{
+    margin-right: 1.2em;
+    border: 1px solid var(--primary-col);
+    padding: 1em;
+}
+
+.task-form {
+    margin: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.task-board {
+    display: flex;
+    gap: 20px;
+    min-width: 100%;
+    justify-content: center;
+    margin: 1em;
+}
+
+.task-column {
+    border: 2px solid var(--secondary-col);
+    border-radius: 10px;
+    padding: 1em;
+    width: 35em;
+}
+
+.task-list {
+    min-height: 25em;
+    padding-top: 10px;
+}
+
+.task-card {
+    background-color: var(--card-color);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: grab;
+}
+
+#todo-list .task-card{
+    border-top: var(--card-border-todo);
+
+}
+
+#progress-list .task-card{
+    border-top: var(--card-border-progress)
+
+}
+
+#completed-list .task-card{
+    border-top: var(--card-border-completed);
+    
+}
+
+.task-card.dragging {
+    opacity: 0.5;
+}

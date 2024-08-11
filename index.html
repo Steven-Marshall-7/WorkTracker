@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Task Tracker</title>
+</head>
+<body>
+    <div class="header"><h1>Task Tracker</h1></div>
+    <div class="task-form">
+        <input type="text" id="task-name" placeholder="Task Name" maxlength="15">
+        <input type="text" id="description" placeholder="Description" maxlength="50">
+        <input type="number" id="task-hours" placeholder="Hours spent" min="1" max="200">
+        <button id="add-task-btn">Add Task</button>
+        <button id="delete-task-btn">Delete All</button>
+
+    </div>
+    <div class ="task-count">
+        <p id="todo-count">To-Do: 0</p>
+        <p id="progress-count">In Progress: 0</p>
+        <p id="completed-count">Completed: 0</p>
+
+    </div>
+    <div class ="task-board">
+        <div class="task-column" id="todo-column">
+            <h2>To-Do</h2>
+            <div class="task-list" id="todo-list"></div>
+        </div>
+        <div class="task-column" id="progress-column">
+            <h2>In Progress</h2>
+            <div class="task-list" id="progress-list"></div>
+            </div>
+            <div class="task-column" id="completed-column">
+                <h2>Completed</h2>
+                <div class="task-list" id="completed-list"></div>
+    </div>
+    </div>
+    
+</body>
+<script src="app.js"></script>
+</html>
