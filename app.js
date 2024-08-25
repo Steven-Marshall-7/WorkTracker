@@ -8,11 +8,15 @@ const taskLists = document.querySelectorAll('.task-list');
 const completedList = document.getElementById('completed-list');
 const todoList = document.getElementById('todo-list');
 const progressList = document.getElementById('progress-list');
+const assignbtn = document.getElementById('assign-btn');
+const dropdown = document.getElementById('assign-member');
+const option = document.getElementsByName('option');
 
 
 // Event Listeners
 addTaskBtn.addEventListener('click', addTask);
 deleteTaskBtn.addEventListener('click', deleteTask);
+assignbtn.addEventListener('click', addMember);
 taskLists.forEach(list => {
     list.addEventListener('dragover', dragoverHandler);
     list.addEventListener('drop', dropHandler);
@@ -33,10 +37,35 @@ function taskCount() {
     document.getElementById('progress-count').textContent = `In Progress: ${progressCount}`;
 }
 
+let members = [];
+
+function addMember(){
+    const addNewMembers = document.getElementById('assign')
+    const newMembers = addNewMembers.value.split(',');
+    members.push(...newMembers.map(member => member.trim()));
+
+    for ( var i = 0; i< members.length; i++){
+        console.log(members[i]);
+
+    }
+    dropdown.innerHTML = '';
+    
+    members.forEach(member => {
+        const option = document.createElement('option');
+        option.value = member;
+        option.textContent = member;
+        dropdown.appendChild(option)
+    });
+    addNewMembers.value='';
+
+}
+
+
 function addTask() {
     const taskName = taskNameInput.value;
     const desc = description.value;
     const taskHours = taskHoursInput.value;
+    const assignedMember = document.getElementById('assign-member').value;
 
     if (taskName === '' || desc === '' || taskHours === '') return;
 
@@ -49,6 +78,7 @@ function addTask() {
         <h3>${taskName}</h3>
         <p>${desc}</p>
         <p>Hours to Complete: ${taskHours}</p>
+        <p>Task Assigned to: ${assignedMember}</p>
         <button class ="taskDelete">Delete Task</button>    
     `;
 
