@@ -90,7 +90,7 @@ button{
 
 }
 
-.taskDelete{
+.taskDelete, .editTask{
     margin-top: 1em;
     padding: 0.2em 1.5em 0.2em 1.5em;
 }

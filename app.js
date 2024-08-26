@@ -41,13 +41,19 @@ let members = [];
 
 function addMember(){
     const addNewMembers = document.getElementById('assign')
-    const newMembers = addNewMembers.value.split(',');
-    members.push(...newMembers.map(member => member.trim()));
+   
+    const memberValue = addNewMembers.value.trim();
 
-    for ( var i = 0; i< members.length; i++){
-        console.log(members[i]);
+    if(memberValue !== ''){
+        const newMembers = memberValue.split(',').map(member => member.trim()).filter(member => member !== '');
 
-    }
+    
+    
+    
+    members.push(...newMembers)
+
+
+    
     dropdown.innerHTML = '';
     
     members.forEach(member => {
@@ -56,6 +62,8 @@ function addMember(){
         option.textContent = member;
         dropdown.appendChild(option)
     });
+
+}
     addNewMembers.value='';
 
 }
@@ -79,7 +87,8 @@ function addTask() {
         <p>${desc}</p>
         <p>Hours to Complete: ${taskHours}</p>
         <p>Task Assigned to: ${assignedMember}</p>
-        <button class ="taskDelete">Delete Task</button>    
+        <button class ="taskDelete">Delete Task</button>
+        <button class ="editTask">Edit Task</button>    
     `;
 
     const deleteButton = taskCard.querySelector('.taskDelete');
@@ -93,6 +102,10 @@ function addTask() {
     clearForm();
    
 }
+
+
+
+
 
 function taskDeleted(taskId){
     const taskCard = document.getElementById(taskId);
