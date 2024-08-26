@@ -11,6 +11,7 @@ const progressList = document.getElementById('progress-list');
 const assignbtn = document.getElementById('assign-btn');
 const dropdown = document.getElementById('assign-member');
 const option = document.getElementsByName('option');
+const editbtn = document.getElementsByClassName('editTask')
 
 
 // Event Listeners
@@ -69,6 +70,9 @@ function addMember(){
 }
 
 
+
+
+
 function addTask() {
     const taskName = taskNameInput.value;
     const desc = description.value;
@@ -83,12 +87,12 @@ function addTask() {
     taskCard.setAttribute('draggable', 'true');
     taskCard.setAttribute('id', taskId);
     taskCard.innerHTML = `
-        <h3>${taskName}</h3>
-        <p>${desc}</p>
-        <p>Hours to Complete: ${taskHours}</p>
-        <p>Task Assigned to: ${assignedMember}</p>
+        <h3 class="taskname">${taskName}</h3>
+        <p class="description">${desc}</p>
+        <p class="hours">Hours to Complete: ${taskHours}</p>
+        <p class="assigned">Task Assigned to: ${assignedMember}</p>
         <button class ="taskDelete">Delete Task</button>
-        <button class ="editTask">Edit Task</button>    
+        <button class="editTask" onclick ="editTask('${taskId}')">Edit Task</button>    
     `;
 
     const deleteButton = taskCard.querySelector('.taskDelete');
@@ -100,10 +104,44 @@ function addTask() {
     taskCount()
     // saveTasks();
     clearForm();
-   
+    const addTaskBtn = document.getElementById('add-task-btn');
+    addTaskBtn.textContent = 'Add Task';   // Change back to "Add Task"
+    addTaskBtn.onclick = addTask;
 }
 
+function editTask (taskId){
 
+    const taskCard = document.getElementById(taskId);
+    
+    const taskName = taskCard.querySelector('.taskname').textContent.replace('Description: ', '');
+    const description = taskCard.querySelector('.description').textContent;
+    const hours = taskCard.querySelector('.hours').textContent;
+    const assigned = taskCard.querySelector('.assigned').textContent;
+    
+    document.getElementById('task-name').value = taskName;
+    document.getElementById('description').value = description;
+    document.getElementById('assign-member').value = assigned;
+    
+
+    if (!isNaN(hours)) {
+        document.getElementById('task-hours').value = taskHours;
+    } else {
+        document.getElementById('task-hours').value = '0'; 
+    }
+    
+    const addTaskBtn = document.getElementById('add-task-btn');
+    addTaskBtn.textContent = 'Save Changes';
+
+    // Remove the task card from the list
+    taskCard.remove();
+
+    // Modify the `addTask` function to handle saving changes
+    addTaskBtn.onclick = function () {
+        addTask(taskId);            
+        }
+    }
+
+    
 
 
 
@@ -160,7 +198,7 @@ function dropHandler(ev) {
         }
     }
 
-    
+  
 
 taskCount();
 
