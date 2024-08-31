@@ -132,10 +132,8 @@ function editTask (taskId){
     const addTaskBtn = document.getElementById('add-task-btn');
     addTaskBtn.textContent = 'Save Changes';
 
-    // Remove the task card from the list
     taskCard.remove();
 
-    // Modify the `addTask` function to handle saving changes
     addTaskBtn.onclick = function () {
         addTask(taskId);            
         }

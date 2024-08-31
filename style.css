@@ -36,6 +36,10 @@ textarea, select {
   font-size: inherit;
 }
 
+.space-small > *  {
+    margin-bottom: 2rem;
+}
+
 body {
     line-height: 1.5;
     letter-spacing: 0.1em;
@@ -107,7 +111,7 @@ button{
 }
 
 .task-form {
-    margin: 20px;
+    margin-top: 1.5rem;
     display: flex;
     gap: 10px;
 }
@@ -138,6 +142,12 @@ button{
     padding: 10px;
     margin-bottom: 10px;
     cursor: grab;
+}
+
+#assign-member, option{
+    padding: 0.4em;
+    width: 8em;
+    border-radius: 20px;
 }
 
 #todo-list .task-card{

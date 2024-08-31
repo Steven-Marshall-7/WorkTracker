@@ -8,20 +8,22 @@
 </head>
 <body>
     <div class="header"><h1>Task Tracker</h1></div>
-    <div class="task-form">
+    <div class="task-form space-small">
         <input type="text" id="task-name" placeholder="Task Name" maxlength="15">
         <input type="text" id="description" placeholder="Description" maxlength="50">
         <input type="number" id="task-hours" placeholder="Hours spent" min="1" max="200">
        
-        <input type="text" id="assign" placeholder="Assign"> <button id="assign-btn">Add</button>
-
+        
+    </div>
+    <div class="assign-members space-small">
+        <input type="text" id="assign" placeholder="Assign"> <button id="assign-btn">Add Member</button>
         <label for="assign-member">Assign Member:</label>
         <select name="assign-member" id="assign-member">
             <option value="none">None</option>
         </select>
     </div>
-    
-    <div> <button id="add-task-btn">Add Task</button>
+
+    <div class="space-small"> <button id="add-task-btn">Add Task</button>
         <button id="delete-task-btn">Delete All</button></div>
     <div class ="task-count">
         <p id="todo-count">To-Do: 0</p>
